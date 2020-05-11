@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    .first{
+        display:inline-block;
+        width: auto;
+    }
+    .second{
+      display: inline-block;
+      width: auto;
+      padding: 5px;
+      margin-left: 100px;
+      background-color: #8AE1D8;
+      padding: 1em;
+      box-shadow: -1px 4px 55px -5px rgba(0,0,0,0.75);
+      transform: translateY(-70%);
+    }
+    .image1 {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    .image2 {
+      position: absolute;
+      top: 272px;
+      left: 514px;
+    }
+
+    </style>
+  </head>
+  <body>
+
+<div class="first">
+  <img class="image1" src="https://i.imgur.com/9HJ8w99.png"></img>
+  <img id="pin" class="image2" style="transform-origin: bottom;" height="80px" width="4px"
+  src="https://i.pinimg.com/474x/07/33/02/0733027b0dfbae782ee181861da38ca6--plates.jpg">
+</div>
+ <div class="second">
+   <h3>Hey</h3>
+   <p>My name is Vidhi Angrish and I've made this real-time speed-o-meter.</p>
+   <p>Check the working:</p>
+   <ul>
+     <li>Add "?speed=(the speed value)" to the URL.</li>
+     <li>Check out the speed-o-meter of this car dashboard!</li>
+   </ul>
+ </div>
+<script>
+function get(vars)
+{
+       var search = window.location.search.substring(1);
+       var params = search.split("&");
+       for (var i=0;i<params.length;i++) {
+               var value = params[i].split("=");
+               if(value[0] == vars){return parseInt(value[1]);}
+       }
+       return(false);
+}
+
+if(get('speed')<0 || get('speed')>220){
+alert('Incorrect speed range!');
+document.getElementById("pin").style.display = "none";
+}
+
+var degree =  -120 + get('speed');
+
+document.getElementById("pin").style.transform = "rotate(" + degree + "deg)";
+
+</script>
+
+
+</body>
+</html>
